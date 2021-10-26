@@ -9,8 +9,24 @@
     </head>
 
     <body>
-        <div id="msg">
-            {{ message }}
+        <div id="begin">
+            
+
+            <div id="stats">
+                <li v-for="stat in stats"> {{ stat.stat_name }} : {{ stat.value }} </li>
+            </div>
+
+            <button id="botton" v-on:click="study">
+                study
+            </button>
+            <button id="botton" v-on:click="next_day">
+                next_day
+            </button>
+
+            <div class="dialog">
+                {{ message }}
+            </div>
+
         </div>
     </body>
 </html>
