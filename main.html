@@ -24,6 +24,21 @@
                 next_day
             </button>
 
+            <div class="bank">
+                <img src="childe.png" alt="Bank" width="100px" height="150px"  v-on:click="intro_bank">
+                <button v-if="bank_demarche" v-on:click="chk_bank">
+                    demarche
+                </button>
+            </div>
+
+            <div class="backpack">
+                <p v-on:click="passport=add_object(passport)">passport: {{ passport }}, </p>
+                <p v-on:click="a_naissance=add_object(a_naissance)">acte de naissance: {{ a_naissance }}, </p> 
+                <p v-on:click="attes_logement =add_object(attes_logement)">attestation de logement: {{ attes_logement }}, </p> 
+                <p v-on:click="attes_etudiant=add_object(attes_etudiant)">attestation d'etudiant: {{ attes_etudiant }} </p>
+            </div>
+            
+
             <div class="dialog">
                 {{ message }}
             </div>
