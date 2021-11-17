@@ -2,15 +2,21 @@ var msg = new Vue({
     el:"#begin",
     data:{
         message:"See you again, world!",
-        click_bank:0, click_tag:0, click_school:0,
-        bank_demarche:false, tag_demarche:false, school_demarche:false,
-        lock_ofii:false, lock_caf:false,
+        click_bank:0, click_tag:0, click_school:0, // demarche button
+        bank_demarche:false, tag_demarche:false, school_demarche:false, // demarche button
+        lock_ofii:false, lock_caf:false, // lock locations
 
-        school_weekday:false, tag_done:false,
-        passport:0, a_naissance:0, attes_logement:0, attes_etudiant:0, photo:0,
+        school_weekday:false, tag_done:false, // effect of demarche
+        passport:0, a_naissance:0, attes_logement:0, attes_etudiant:0, photo:0, //backpack
 
+        // results
         be1:false, be2:false,
         he1:false,
+
+        // events
+        rd_num:-1, event_num:-1, content:true,
+
+        // stats
         stats:[
             
             {stat_name:"Health", value: 100},
@@ -22,30 +28,37 @@ var msg = new Vue({
         ],
     },
     methods:{
-        study:function(){
-            if (this.stats[4].value >=10){
-                this.message = "Studying..."
-                this.stats[3].value += 5  // study
-                this.stats[4].value -= 15 // energy
-                this.stats[5].value -= 5 // hanpiness
-            }
-            else{
-                this.message = "You ran out of energy"
-            }
-        },
         next_day:function(){
             this.stats[4].value = 50 // energy
             this.stats[2].value += 1 // days
             this.stats[1].value -= 20 // money
             this.message = "day "+this.stats[2].value
             // rent for the studio
-            if (this.stats[2].value % 3 == 0){
+            if (this.stats[2].value % 15 == 0){
                 this.message = "pay for the rent of your studio: money - 500"
                 this.stats[1].value -= 500
+                if (this.tag_done == true){
+                    this.stats[1].value -= 15
+                }
             }
-            // random events todo
-            // school, bank events
+            // ------------------------------------random events todo--------------------------------------
+            this.rd_num = Math.floor(Math.random()*4)
+            if(this.rd_num == 0){ // random event 0:
+                this.message = " Your classmates wants to invite you to a party, you wanna go? (y/n)"
+                this.content = false
+            }
+            else if (this.rd_num == 1){
+                this.message = "day "+this.stats[2].value
+            }
+            else if (this.rd_num == 2){
+                this.message = "day "+this.stats[2].value
+            }
+            else if (this.rd_num == 3){
+                this.message = " event 3 "
+                this.content = false
+            }
 
+            // -------------------------------------school, bank events-----------------------------------
             // if you don't study at school on weekdays, your study will drop
             if (this.stats[2].value % 6 != 0 && this.stats[2].value % 7 != 0){// if on weekdays
                 if(this.school_weekday == false){
@@ -69,10 +82,37 @@ var msg = new Vue({
                 this.message=" You failed your semester...  GAME OVER"
             }
         },
+        // ---------------------------------------------------------------------------------------
         add_object:function(times){
             times += 1
             times = times % 2
             return times
+        },
+        study:function(){
+            if (this.stats[4].value >=10){
+                this.message = "Studying..."
+                this.stats[3].value += 5  // study
+                this.stats[4].value -= 15 // energy
+                this.stats[5].value -= 5 // hanpiness
+            }
+            else{
+                this.message = "You ran out of energy"
+            }
+        },
+        rd_1_y:function(){
+            this.stats[3].value += 5 // study
+            this.stats[4].value -= 15 // energy
+            this.stats[1].value -= 10 // money
+            this.stats[0].value -= 5 //health
+            this.stats[5].value += 15 // hanpiness
+            this.content = true
+            this.rd_num = -1
+        },
+        rd_1_n:function(){
+            this.stats[3].value += 5 // study
+            this.stats[5].value -= 10 // hanpiness
+            this.content = true
+            this.rd_num = -1
         },
         //-----------------------------------bank---------------------------------
         intro_bank:function(){

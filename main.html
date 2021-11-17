@@ -11,55 +11,62 @@
 
     <body>
         <div id="begin">
-
-            <img v-if="be2" src="be.jfif" alt="child" width="1080px" height="800px">
-
-            <div id="stats">
-                <li v-for="stat in stats"> {{ stat.stat_name }} : {{ stat.value }} </li>
+            <!-- pictures in the game -->
+            <div id="final_pics">
+                <img v-if="be2" src="be.jfif" alt="be2" width="1080px" height="800px">
             </div>
-
-            <button id="botton" v-on:click="study">
-                study
-            </button>
-            <button id="botton" v-on:click="next_day">
-                next_day
-            </button>
-
-            <div class="places_on_map">
-                <div class="bank">
-                    <img src="childe.png" alt="Bank" width="100px" height="150px"  v-on:click="intro_bank">
-                    <button v-if="bank_demarche" v-on:click="chk_bank">
-                        demarche
-                    </button>
-                </div>
-    
-                <div class="tag">
-                    <img src="tag.png" alt="Bank" width="150px" height="100px"  v-on:click="intro_tag">
-                    <button v-if="tag_demarche" v-on:click="chk_tag">
-                        demarche
-                    </button>
-                </div>
-    
-                <div class="school">
-                    <img src="school.jpg" alt="Bank" width="150px" height="100px"  v-on:click="intro_school">
-                    <button v-if="school_demarche" v-on:click="study_school">
-                        study
-                    </button>
-                    <button v-if="school_demarche" v-on:click="socialize_school">
-                        socialize
-                    </button>
-                </div>
+            <div id="event_pics">
+                <img v-if="this.rd_num===0" src="manual_girl.jpg" alt="yuhe" width="500px" height="300px">
+                <input v-if="this.rd_num===0" v-on:keyup.89.once="rd_1_y" v-on:keyup.78.once="rd_1_n">
             </div>
             
+            <div id="contenu" v-if="content">
+                <div id="stats">
+                    <li v-for="stat in stats"> {{ stat.stat_name }} : {{ stat.value }} </li>
+                </div>
 
-            <div class="backpack">
-                <p v-on:click="passport=add_object(passport)">passport: {{ passport }}, </p>
-                <p v-on:click="a_naissance=add_object(a_naissance)">acte de naissance: {{ a_naissance }}, </p> 
-                <p v-on:click="attes_logement =add_object(attes_logement)">attestation de logement: {{ attes_logement }}, </p> 
-                <p v-on:click="attes_etudiant=add_object(attes_etudiant)">attestation d'etudiant: {{ attes_etudiant }} </p>
-                <p v-on:click="photo=add_object(photo)">photo: {{ photo }}, </p>
+                <button id="botton" v-on:click="study">
+                    study
+                </button>
+                <button id="botton" v-on:click="next_day">
+                    next_day
+                </button>
+
+                <div class="places_on_map">
+                    <div class="bank">
+                        <img src="childe.png" alt="Bank" width="100px" height="150px"  v-on:click="intro_bank">
+                        <button v-if="bank_demarche" v-on:click="chk_bank">
+                            demarche
+                        </button>
+                    </div>
+        
+                    <div class="tag">
+                        <img src="tag.png" alt="Bank" width="150px" height="100px"  v-on:click="intro_tag">
+                        <button v-if="tag_demarche" v-on:click="chk_tag">
+                            demarche
+                        </button>
+                    </div>
+        
+                    <div class="school">
+                        <img src="school.jpg" alt="Bank" width="150px" height="100px"  v-on:click="intro_school">
+                        <button v-if="school_demarche" v-on:click="study_school">
+                            study
+                        </button>
+                        <button v-if="school_demarche" v-on:click="socialize_school">
+                            socialize
+                        </button>
+                    </div>
+                </div>
+                
+
+                <div class="backpack">
+                    <p v-on:click="passport=add_object(passport)">passport: {{ passport }}, </p>
+                    <p v-on:click="a_naissance=add_object(a_naissance)">acte de naissance: {{ a_naissance }}, </p> 
+                    <p v-on:click="attes_logement =add_object(attes_logement)">attestation de logement: {{ attes_logement }}, </p> 
+                    <p v-on:click="attes_etudiant=add_object(attes_etudiant)">attestation d'etudiant: {{ attes_etudiant }} </p>
+                    <p v-on:click="photo=add_object(photo)">photo: {{ photo }}, </p>
+                </div>
             </div>
-            
 
             <div class="dialog">
                 {{ message }}
