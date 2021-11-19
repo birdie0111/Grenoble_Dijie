@@ -43,7 +43,7 @@ var msg = new Vue({
             }
             // ------------------------------------random events todo--------------------------------------
             this.rd_num = Math.floor(Math.random()*4)
-            if(this.rd_num == 0){ // random event 0:
+            if(this.rd_num == 0 && this.stats[2].value % 7 == 0){ // random event 0:
                 this.message = " Your classmates wants to invite you to a party, you wanna go? (y/n)"
                 this.content = false
             }
@@ -55,7 +55,7 @@ var msg = new Vue({
             }
             else if (this.rd_num == 3){
                 this.message = " event 3 "
-                this.content = false
+                //this.content = false
             }
 
             // -------------------------------------school, bank events-----------------------------------
