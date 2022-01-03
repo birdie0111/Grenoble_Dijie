@@ -1,77 +1,129 @@
 <!DOCTYPE html>
 <html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <title> Game </title>
-        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-        <script src="vue.js"></script>
-        <script defer="" src="main.js"></script></script>
-        <!-- <script src="vue.js"></script> -->
-    </head>
 
-    <body>
-        <div id="begin">
-            <!-- pictures in the game -->
-            <div id="final_pics">
-                <img v-if="be2" src="be.jfif" alt="be2" width="1080px" height="800px">
-            </div>
-            <div id="event_pics">
-                <img v-if="this.rd_num===0" src="manual_girl.jpg" alt="yuhe" width="500px" height="300px">
-                <input v-if="this.rd_num===0" v-on:keyup.89.once="rd_1_y" v-on:keyup.78.once="rd_1_n">
-            </div>
+<head>
+    <meta charset="UTF-8">
+    <title> Game </title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="vue.js"></script>
+    <script defer="" src="main.js"></script>
+    </script>
+    <!-- <script src="vue.js"></script> -->
+    <link rel="stylesheet" type="text/css" media="all" href="main_posi.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="main_style.css" />
+    <!-- ajout des css ci-dessus -->
+</head>
+
+<body>
+    <div id="begin">
+        <!-- pictures in the game -->
+        
+
+        <div id="final_pics">
+            <img v-if="mt1" src="be.jfif" alt="mt1" width="1080px" height="800px">
+            <button class="moyen" v-if="mt1" v-on:click="back_from_travel"> back </button>
+
+            <img v-if="mt2" src="be.jfif" alt="mt1" width="1080px" height="800px">
+            <button class="moyen" v-if="mt2" v-on:click="back_from_travel"> back </button>
+
+            <img v-if="mt3" src="be.jfif" alt="mt1" width="1080px" height="800px">
+            <button class="moyen" v-if="mt3" v-on:click="back_from_travel"> back </button>
             
-            <div id="contenu" v-if="content">
-                <div id="stats">
-                    <li v-for="stat in stats"> {{ stat.stat_name }} : {{ stat.value }} </li>
-                </div>
-
-                <button id="botton" v-on:click="study">
-                    study
-                </button>
-                <button id="botton" v-on:click="next_day">
-                    next_day
-                </button>
-
-                <div class="places_on_map">
-                    <div class="bank">
-                        <img src="childe.png" alt="Bank" width="100px" height="150px"  v-on:click="intro_bank">
-                        <button v-if="bank_demarche" v-on:click="chk_bank">
-                            demarche
-                        </button>
-                    </div>
+        </div> 
         
-                    <div class="tag">
-                        <img src="tag.png" alt="Bank" width="150px" height="100px"  v-on:click="intro_tag">
-                        <button v-if="tag_demarche" v-on:click="chk_tag">
-                            demarche
-                        </button>
-                    </div>
         
-                    <div class="school">
-                        <img src="school.jpg" alt="Bank" width="150px" height="100px"  v-on:click="intro_school">
-                        <button v-if="school_demarche" v-on:click="study_school">
-                            study
-                        </button>
-                        <button v-if="school_demarche" v-on:click="socialize_school">
-                            socialize
-                        </button>
+        <div id="event_pics">
+            <img v-if="this.rd_num===0" src="manual_girl.jpg" alt="yuhe" width="500px" height="300px">
+            <input v-if="this.rd_num===0" v-on:keyup.89.once="rd_1_y" v-on:keyup.78.once="rd_1_n">
+        </div>
+
+        <div id="contenu" v-if="content">
+            <div id="stats">
+                <li v-for="stat in stats"> {{ stat.stat_name }} : {{ stat.value }} </li>
+            </div>
+            <div id="mapbag">
+                <div id="map">
+                    <img id="grenoble" src="grenoble.png">
+
+                    <div class="places_on_map">
+                        <div class="bank"  v-on:click="intro_bank">
+                            <button class="petit" v-if="bank_demarche" v-on:click="chk_bank">
+                                démarche
+                            </button>
+                        </div>
+
+                        <div class="tag" id="tag_1" v-on:click="intro_tag">
+                            <button class="petit" v-if="tag_demarche" v-on:click="chk_tag">
+                                démarche
+                            </button>
+                        </div>
+
+                        <div class="tag" id="tag_2" v-on:click="intro_tag">
+                            <button class="petit" v-if="tag_demarche" v-on:click="chk_tag">
+                                démarche
+                            </button>
+                        </div>
+
+                        <div class="tag" id="travel1" v-on:click="mountain">
+                            
+                        </div>
+                        <div class="tag" id="travel2" v-on:click="mountain">
+                            
+                        </div>
+
+                        
+                        <div class="caf" v-on:click="intro_caf">
+                            <button class="petit" v-if="caf_demarche" v-on:click="chk_caf">
+                                démarche
+                            </button>
+                        </div>                                                                                    
+                    
+                        <!--弄好vue功能前别取消注释，否则全部vue功能都失效-->
+
+                        <div class="fac" v-on:click="intro_school">
+                            <button class="moyen" v-if="school_demarche" v-on:click="study_school">
+                                étudier
+                            </button>
+                            <button class="moyen" v-if="school_demarche" v-on:click="socialize_school">
+                                se socialiser
+                            </button>
+                        </div>
                     </div>
+
+
                 </div>
-                
 
                 <div class="backpack">
                     <p v-on:click="passport=add_object(passport)">passport: {{ passport }}, </p>
-                    <p v-on:click="a_naissance=add_object(a_naissance)">acte de naissance: {{ a_naissance }}, </p> 
-                    <p v-on:click="attes_logement =add_object(attes_logement)">attestation de logement: {{ attes_logement }}, </p> 
-                    <p v-on:click="attes_etudiant=add_object(attes_etudiant)">attestation d'etudiant: {{ attes_etudiant }} </p>
+                    <p v-on:click="a_naissance=add_object(a_naissance)">acte de naissance: {{ a_naissance }}, </p>
+                    <p v-on:click="attes_logement =add_object(attes_logement)">attestation de logement: {{
+                        attes_logement }}, </p>
+                    <p v-on:click="attes_etudiant=add_object(attes_etudiant)">attestation d'etudiant: {{ attes_etudiant
+                        }} </p>
                     <p v-on:click="photo=add_object(photo)">photo: {{ photo }}, </p>
+                    <p v-if="lock_ofii" v-on:click="cb=add_object(cb)">cb: {{ cb }}, </p>
+
+                    <div id="dothings">
+                        <img src="étudier.png" id="imgétudier" v-on:click="study">
+                        <button class="grand" v-on:click="study">
+                            étudier
+                        </button>
+                        <img src="demain.png" id="imgdemain" v-on:click="next_day">
+                        <button class="grand" v-on:click="next_day">
+                            demain
+                        </button>
+                    </div>
+
                 </div>
-            </div>
 
-            <div class="dialog">
-                {{ message }}
             </div>
-
         </div>
-    </body>
+
+        <div class="dialog">
+            {{ message }}
+        </div>
+
+    </div>
+</body>
+
 </html>

@@ -1,0 +1,112 @@
+#stats {
+	background-color: #D4F6ED;
+    border: solid #15E1F0;
+	font-family: comic sans ms;
+    font-size: 20px;
+    color: darkblue;
+}
+
+.backpack {
+    background-color: #A6F8DD;
+    border: solid #25EEAC;
+	font-family: comic sans ms;
+    font-size: 20px;
+    color: darkblue;
+}
+
+.dialog {
+    background-color: #9BFABE;
+    border: solid #19E464;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    color: darkgreen;
+}
+
+/*-----------------------------------------------------------------------------------------按钮从这儿  开始--*/
+/*--------------------------------------------------------------小按钮--*/
+.petit {
+    background: linear-gradient(to bottom, #64b5f6 0%, #42a5f5 100%);
+    box-shadow: inset 0 1px #bbdefb, 0 1px 2px rgba(0,0,0,.2);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: #fbfbfb;
+    font-weight: 100;
+    font-size: 16px;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    border-radius: 3px;
+    border: 1px solid #1e88e5;
+}
+.petit:active {
+    border-color: #1976d2;
+    color: #e3f2fd;
+    background: linear-gradient(to bottom, #42a5f5 0%, #1e88e5 100%);
+    box-shadow: inset 0 2px 2px #1976d2;
+}
+/*---------------------------------------------------------学校 中按钮--*/
+.moyen {
+    font-family: comic sans ms;
+    color: #E8F5E9;
+    font-size: 18px;
+    background: linear-gradient(to bottom, #81C784 0%, #66BB6A 100%);
+    box-shadow: inset 0 1px #C8E6C9, 0 1px 2px rgba(0,0,0,.2);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: #fbfbfb;
+    font-weight: 100;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    border-radius: 3px;
+    border: 1px solid #43A047;
+}
+.moyen:active {
+    border-color: #388E3C;
+    color: #C8E6C9;
+    background: linear-gradient(to bottom, #66BB6A 0%, #43A047 100%);
+    box-shadow: inset 0 2px 2px #388E3C;
+}
+/*---------------------------------------------------------底部 大按钮--*/
+button.grand {
+    background: linear-gradient(to bottom, #4eb5e5 0%,#389ed5 100%);
+    border: none;
+    border-radius: 5px;
+    position: relative;
+    border-bottom: 4px solid #2b8bc6;
+    color: #fbfbfb;
+    font-weight: 300;
+    font-family: comic sans ms;
+    font-size: 18px;
+    text-shadow: 1px 1px 1px rgba(0,0,0,.4);
+    text-align: left;
+    text-indent: 5px;
+    box-shadow: 0px 3px 0px 0px rgba(0,0,0,.2);
+    cursor: pointer;
+    padding-right: 30px;
+    display: block;
+    margin: 0 auto;
+}
+button.grand:active {
+    box-shadow: 0px 2px 0px 0px rgba(0,0,0,.2);
+    top: 1px;
+}
+button.grand:after {
+    content: "";
+    width: 0;
+    height: 0;
+    display: block;
+    border-top: 15px solid #187dbc;
+    border-bottom: 15px solid #187dbc;
+    border-left: 16px solid transparent;
+    border-right: 20px solid #187dbc;
+    position: absolute;
+    opacity: 0.6; 
+    right: 0;
+    top: 0;
+    border-radius: 0 5px 5px 0;  
+}
+
+/*-----------------------------------------------------------------------------------------按钮到这儿  为止--*/
+
+

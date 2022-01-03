@@ -1,0 +1,163 @@
+body {
+    display: flex;
+    flex-direction:column;
+}
+
+#stats {
+    display: flex;
+    letter-spacing:2px;
+    justify-content:space-around;
+	padding : 16px 16px 16px 16px;
+}
+
+#mapbag {
+    display: flex;
+    position:relative;
+}
+
+#map {
+    width: 80%;
+    height: 600px;
+}
+/*------------------------------地图---背景图--*/
+#grenoble {
+    position: absolute;
+    z-index: 1;
+    top: 4px;
+    left: 4px;
+    width: 79%;
+    height: 99%;
+}
+
+
+/*-----------------------------------------------------------------------地图上----各个地点----的位置--*/
+.bank {
+    position:absolute;
+    z-index: 2;
+    top:183px;
+    left:21.5%;
+    width: 40px;
+    height: 40px;
+}
+#tag_1 {
+    position:absolute;
+    z-index: 2;
+    top:163px;
+    left:16.5%;
+    width: 40px;
+    height: 40px;
+}
+#tag_2 {
+    position:absolute;
+    z-index: 2;
+    top:312px;
+    left:12.5%;
+    width: 40px;
+    height: 40px;
+}
+#travel1 {
+    position:absolute;
+    z-index: 2;
+    top:40%;
+    left:70%;
+    width: 100px;
+    height: 80px;
+}
+#travel2 {
+    position:absolute;
+    z-index: 2;
+    top:19%;
+    left:10%;
+    width: 100px;
+    height: 80px;
+}
+.caf {
+    position:absolute;
+    z-index: 2;
+    top:505px;
+    left:27%;
+    width: 80px;
+    height: 50px;
+}
+.fac {
+    position:absolute;
+    z-index: 2;
+    top:100px;
+    left:50%;
+    width: 200px;
+    height: 75px;
+}
+/*----------------------------地图上----各个地点-鼠标跟踪阴影--*/
+.bank:hover {
+    background-color:rgba(0,160,196,0.2);
+    cursor: pointer;
+}
+.tag:hover {
+    background-color:rgba(0,160,196,0.2);
+    cursor: pointer;
+}
+.caf:hover {
+    background-color:rgba(0,160,196,0.2);
+    cursor: pointer;
+}
+.fac:hover {
+    background-color:rgba(0,160,196,0.2);
+    cursor: pointer;
+}
+
+/*-------------------------------------------------------------------------------按钮--框架位置--*/
+.petit {
+    width: 85px;
+    height: 30px;
+    margin-left: 40px;
+    margin-top: 5px;
+}
+
+.moyen {
+    margin-left: 5px;
+    margin-top: 50px;
+}
+
+/*----------------------------------------------------------------------------底部大按钮-的-框架位置--*/
+#dothings {
+    position:absolute;
+    z-index: 2;
+    left:30px;
+    top:547px;
+    width: 240px;
+    float:right;
+    display: flex;
+    justify-content:space-around;
+    align-items:center;
+    padding : 10px 10px 0px 0px;
+}
+#imgétudier {
+    width: 12%;
+    height: 12%;
+    padding-right: 2px;
+}
+#imgdemain {
+    width: 12%;
+    height: 12%;
+    padding-left: 8px;
+    padding-right: 2px;
+}
+
+/*---------------------------------------------------------背包框 和 文字框--*/
+.backpack {
+    position:relative;
+    display: flex;
+    float:right;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    width: 20%;
+    height: 600px;
+}
+
+.dialog {
+    letter-spacing:1px;
+    height: 80px;
+    padding : 16px 16px 16px 16px;
+}
+
