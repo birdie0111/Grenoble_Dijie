@@ -21,13 +21,13 @@
 
         <div id="final_pics">
             <img v-if="mt1" src="be.jfif" alt="mt1" width="1080px" height="800px">
-            <button class="moyen" v-if="mt1" v-on:click="back_from_travel"> back </button>
+            <button class="moyen" v-if="mt1" v-on:click="back_from_travel"> rentre </button>
 
             <img v-if="mt2" src="be.jfif" alt="mt1" width="1080px" height="800px">
-            <button class="moyen" v-if="mt2" v-on:click="back_from_travel"> back </button>
+            <button class="moyen" v-if="mt2" v-on:click="back_from_travel"> rentre </button>
 
             <img v-if="mt3" src="be.jfif" alt="mt1" width="1080px" height="800px">
-            <button class="moyen" v-if="mt3" v-on:click="back_from_travel"> back </button>
+            <button class="moyen" v-if="mt3" v-on:click="back_from_travel"> rentre </button>
             
         </div> 
         
@@ -101,12 +101,12 @@
                     <p v-on:click="attes_etudiant=add_object(attes_etudiant)">attestation d'etudiant: {{ attes_etudiant
                         }} </p>
                     <p v-on:click="photo=add_object(photo)">photo: {{ photo }}, </p>
-                    <p v-if="lock_ofii" v-on:click="cb=add_object(cb)">cb: {{ cb }}, </p>
+                    <p v-if="lock_caf" v-on:click="cb=add_object(cb)">cb: {{ cb }}, </p>
 
                     <div id="dothings">
                         <img src="étudier.png" id="imgétudier" v-on:click="study">
                         <button class="grand" v-on:click="study">
-                            étudier
+                            étudier/sport
                         </button>
                         <img src="demain.png" id="imgdemain" v-on:click="next_day">
                         <button class="grand" v-on:click="next_day">
