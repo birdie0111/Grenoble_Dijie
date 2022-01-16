@@ -34,7 +34,7 @@ var msg = new Vue({
     methods:{
         next_day:function(){
             if (this.caf_demarche == true){
-                this.message = "Congrats, T'as finis tous les démarches necessaires !!"
+                this.message = "Congrats, T'as finis toutes les démarches necessaires !!"
             }
             if(this.stats[2].value >= 30){
                 this.message = "Congrats, T'as réussi ton étude"
