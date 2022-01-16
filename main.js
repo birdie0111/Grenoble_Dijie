@@ -23,8 +23,8 @@ var msg = new Vue({
         // stats
         stats:[
             
-            {stat_name:"Santé", value: 80},
-            {stat_name:"Argent", value: 3500},
+            {stat_name:"Santé", value: 70},
+            {stat_name:"Argent", value: 2500},
             {stat_name:"Jours", value: 1 },
             {stat_name:"Etude", value: 10},
             {stat_name:"Energie", value: 30},
@@ -38,74 +38,77 @@ var msg = new Vue({
             }
             if(this.stats[2].value >= 30){
                 this.message = "Congrats, T'as réussi ton étude"
-            }
-            this.stats[0].value -= 2 // health
-            this.stats[4].value = 30 // energy
-            this.stats[2].value += 1 // days
-            this.stats[1].value -= 20 // money
-            this.message = "jour "+this.stats[2].value
-            // rent for the studio + forfait mobile, tag etc.
-            if (this.stats[2].value % 15 == 0){
-                this.message = "loyer pour ton studio: money - 500, forfait mobile, tag - 25"
-                this.stats[1].value -= 510
-                if (this.tag_done == true){
-                    this.stats[1].value -= 15
-                }
-            }
-            // ------------------------------------random events todo--------------------------------------
-            if (this.stats[2].value % 7 == 0){
-                this.rd_num = 0//Math.floor(Math.random()*4)
-            }
-            if(this.rd_num == 0 && this.stats[2].value % 7 == 0){ // random event 0:
-                
                 this.content = false
-                this.message = " Une sortie avec tes copains/copines ? (y/n)"
-                console.log(this.content)
-            }/*
-            else if (this.rd_num == 1){
-                this.message = "day "+this.stats[2].value
             }
-            else if (this.rd_num == 2){
-                this.message = "day "+this.stats[2].value
-            }
-            else if (this.rd_num == 3){
-                this.message = " event 3 "
-                this.content = false
-                this.message = " Your classmates wants to invite you to a party, you wanna go? (y/n)"
-                console.log(this.content)
-                //this.content = false
-            }*/
+            else{
+                this.stats[0].value -= 2 // health
+                this.stats[4].value = 30 // energy
+                this.stats[2].value += 1 // days
+                this.stats[1].value -= 20 // money
+                this.message = "jour "+this.stats[2].value
+                // rent for the studio + forfait mobile, tag etc.
+                if (this.stats[2].value % 15 == 0){
+                    this.message = "loyer pour ton studio: money - 500, forfait mobile, tag - 25"
+                    this.stats[1].value -= 510
+                    if (this.tag_done == true){
+                        this.stats[1].value -= 15
+                    }
+                }
+                // ------------------------------------random events todo--------------------------------------
+                if (this.stats[2].value % 7 == 0){
+                    this.rd_num = 0//Math.floor(Math.random()*4)
+                }
+                if(this.rd_num == 0 && this.stats[2].value % 7 == 0){ // random event 0:
+                    
+                    this.content = false
+                    this.message = " Une sortie avec tes copains/copines ? (y/n)"
+                    console.log(this.content)
+                }/*
+                else if (this.rd_num == 1){
+                    this.message = "day "+this.stats[2].value
+                }
+                else if (this.rd_num == 2){
+                    this.message = "day "+this.stats[2].value
+                }
+                else if (this.rd_num == 3){
+                    this.message = " event 3 "
+                    this.content = false
+                    this.message = " Your classmates wants to invite you to a party, you wanna go? (y/n)"
+                    console.log(this.content)
+                    //this.content = false
+                }*/
 
-            // -------------------------------------school, bank events-----------------------------------
-            // if you don't study at school on weekdays, your study will drop
-            if (this.stats[2].value % 6 != 0 && this.stats[2].value % 7 != 0){// if on weekdays
-                if(this.school_weekday == false){
-                    this.stats[3].value -= 7
+                // -------------------------------------school, bank events-----------------------------------
+                // if you don't study at school on weekdays, your study will drop
+                if (this.stats[2].value % 6 != 0 && this.stats[2].value % 7 != 0){// if on weekdays
+                    if(this.school_weekday == false){
+                        this.stats[3].value -= 7
+                    }
+                    else{
+                        this.school_weekday = false
+                    }
                 }
-                else{
-                    this.school_weekday = false
-                }
-            }
-            // you need to wait for 7 days for your rib
-            if (this.click_bank == -1){
-                console.log(this.lock_caf)
-                this.count += 1
-                if (this.count == 7){
-                    this.lock_caf = true
-                    this.message = "T'as obtenu le rib, maintenant tu peux faire la démarche de CAF"
+                // you need to wait for 7 days for your rib
+                if (this.click_bank == -1){
+                    console.log(this.lock_caf)
+                    this.count += 1
+                    if (this.count == 7){
+                        this.lock_caf = true
+                        this.message = "T'as obtenu le rib, maintenant tu peux faire la démarche de CAF"
 
+                    }
                 }
-            }
-            // if you don't do the bank demarche before the 7th day, your hanpiness will drop
-            if (this.stats[2].value >= 14 && this.click_bank != -1){
-                this.stats[5].value -= 10
-            }
-            // endings
-            if (this.stats[1].value <= 0){
-                this.message=" Tu n'as plus d'argent, GAME OVER... "
-            }
-            if (this.stats[3].value <= 25 && this.stats[2].value >= 5){
-                this.message=" Ton semestre est ajourné...  GAME OVER"
+                // if you don't do the bank demarche before the 7th day, your hanpiness will drop
+                if (this.stats[2].value >= 14 && this.click_bank != -1){
+                    this.stats[5].value -= 10
+                }
+                // endings
+                if (this.stats[1].value <= 0){
+                    this.message=" Tu n'as plus d'argent, GAME OVER... "
+                }
+                if (this.stats[3].value <= 25 && this.stats[2].value >= 5){
+                    this.message=" Ton semestre est ajourné...  GAME OVER"
+                }
             }
         },
         // ---------------------------------------------------------------------------------------
